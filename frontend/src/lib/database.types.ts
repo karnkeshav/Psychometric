@@ -361,7 +361,7 @@ export type Database = {
           {
             foreignKeyName: "responses_session_question_id_fkey"
             columns: ["session_question_id"]
-            isOneToOne: false
+            isOneToOne: true
             referencedRelation: "session_questions"
             referencedColumns: ["id"]
           },
@@ -371,23 +371,32 @@ export type Database = {
         Row: {
           generated_scenario_text: string | null
           id: string
+          options_json: Json | null
           question_bank_id: string
           sequence_no: number
           session_id: string
+          skill_domain_name: string
+          type: string
         }
         Insert: {
           generated_scenario_text?: string | null
           id?: string
+          options_json?: Json | null
           question_bank_id: string
           sequence_no: number
           session_id: string
+          skill_domain_name: string
+          type: string
         }
         Update: {
           generated_scenario_text?: string | null
           id?: string
+          options_json?: Json | null
           question_bank_id?: string
           sequence_no?: number
           session_id?: string
+          skill_domain_name?: string
+          type?: string
         }
         Relationships: [
           {
