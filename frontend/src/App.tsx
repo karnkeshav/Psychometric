@@ -5,6 +5,7 @@ import { LoginPage } from './routes/LoginPage'
 import { ProgramsPage } from './routes/ProgramsPage'
 import { DisciplinesPage } from './routes/DisciplinesPage'
 import { InstructionsPage } from './routes/InstructionsPage'
+import { QuestionsPage } from './routes/QuestionsPage'
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <InstructionsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/disciplines/:disciplineId/questions"
+            element={
+              <ProtectedRoute>
+                <QuestionsPage />
               </ProtectedRoute>
             }
           />

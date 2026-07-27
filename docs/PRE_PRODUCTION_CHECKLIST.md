@@ -18,6 +18,21 @@ the same commit/PR. Check items off (and note the commit/date) once resolved.
       only ever see `status = 'active'` disciplines (the original
       `disciplines_select_active` policy from `0005_rls_policies.sql`).
 
+## Architecture (temporary scaffolding — must be removed, not just tightened)
+
+- [ ] **Remove `discipline_questions()` (migration `0013`) and the
+      `/disciplines/:id/questions` frontend route entirely once Phase 3's
+      real session-based question delivery exists** (`session_questions` +
+      the `generate-scenario` Edge Function, TRD section 5.1). This
+      function is a SECURITY DEFINER bypass of `question_bank`'s RLS
+      (which intentionally has zero candidate-facing policy) — it exposes
+      the full draft/active question bank for a discipline to any
+      authenticated candidate. It deliberately never selects
+      `scoring_key_json`/`rubric_json`, so it can't leak scoring logic, but
+      it still bypasses the intended session-scoped delivery model
+      entirely. This is not a filter to tighten later — the whole
+      mechanism must go away once the real flow exists.
+
 ## Content / data
 
 - [ ] **Flip all 16 seeded disciplines from `pending_review` to `active`

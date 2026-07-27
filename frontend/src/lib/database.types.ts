@@ -432,6 +432,17 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      discipline_questions: {
+        Args: { p_discipline_id: string }
+        Returns: {
+          base_text: string
+          options_json: Json
+          question_id: string
+          sequence_no: number
+          skill_domain_name: string
+          type: string
+        }[]
+      }
       discipline_summary: {
         Args: { p_discipline_id: string }
         Returns: {

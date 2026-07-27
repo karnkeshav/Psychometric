@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   getDisciplineSummary,
   type DisciplineSummary,
@@ -52,14 +53,12 @@ export function InstructionsSummary({ disciplineId }: { disciplineId: string }) 
         ))}
       </ul>
 
-      <button
-        type="button"
-        disabled
-        title="Assessment questions are coming in a later phase"
-        className="w-full rounded-lg bg-ink px-4 py-2 text-sm font-medium text-white opacity-50"
+      <Link
+        to={`/disciplines/${disciplineId}/questions`}
+        className="block w-full rounded-lg bg-ink px-4 py-2 text-center text-sm font-medium text-white transition hover:opacity-90"
       >
         Start Assessment
-      </button>
+      </Link>
     </div>
   )
 }
