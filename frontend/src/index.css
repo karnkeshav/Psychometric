@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+/* Design System tokens — see /CLAUDE.md "Design System" section.
+   This is a credibility instrument, not a marketing page: calm, precise,
+   trustworthy. Full visual polish pass is Phase 7 — these tokens exist now
+   so nothing built before then defaults to generic Tailwind gray/blue. */
+@theme {
+  --color-ink: #14213d;
+  --color-paper: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-jade: #2e8b74;
+  --color-amber: #c7830a;
+  --color-charcoal: #1c1f26;
+  --color-mist: #dce1e8;
+
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-jade);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
