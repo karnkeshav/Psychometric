@@ -70,7 +70,29 @@ the same commit/PR. Check items off (and note the commit/date) once resolved.
       only — this file only affects `supabase start` / `db reset` locally
       and is not pushed to a hosted project. Confirm the real project's
       Auth settings (email confirmation, rate limits) are configured
-      deliberately, not left on whatever Supabase's default is.
+      deliberately, not left on whatever Supabase's default is. (Confirmed
+      2026-07-27: the `akjfuqeqmabxqjqmbuap` project already has
+      confirmation required, unlike local — real difference, not an
+      oversight, but still worth deliberately reviewing before go-live.)
+- [ ] **`akjfuqeqmabxqjqmbuap` was seeded with the same dev/draft
+      `seed.sql` content as local** (2026-07-27, via `supabase db push
+      --include-seed`, for a resume/persistence verification pass — see
+      commit history around that date). This was a manual one-off, not
+      anything automatic. If this project ever becomes production
+      directly, this seed data (and everything else in this checklist)
+      needs explicit removal — it does not get cleaned up by anything in
+      the deploy pipeline, because there isn't one yet (TRD §9, Phase 8).
+- [ ] **Decide whether `akjfuqeqmabxqjqmbuap` is meant to become
+      production eventually, or whether a separate production project
+      gets created fresh, before assuming either way.** TRD §9 says
+      staging and production should be separate Supabase projects; right
+      now there is only the one, and it has been used as a staging/dev
+      target throughout Phase 1–2 (migrations pushed directly via `db
+      push`, dev-only RLS policies, seed data). If it becomes production
+      directly: migration `0009`'s dev-only RLS policy, all `seed.sql`
+      content, and every other item in this checklist need explicit
+      removal from that specific project — not just a settings flip,
+      since none of this was written with "promote in place" in mind.
 
 ## Dependencies
 
