@@ -22,6 +22,9 @@ consult them before building the relevant feature:
 5. Report language follows the tone rules in the Content Guide, Section 9: no words like "weak," "poor," "fail," "below average," "deficient." Every growth area pairs with a concrete next step. Every report ends on an encouraging, forward-looking line. This is enforced by the system prompt AND checked by a banned-word test before any prompt change ships.
 6. No visible countdown timer during the assessment. Progress is shown as a question-count bar only. The time cap is enforced silently server-side.
 
+## Verification standard (non-negotiable)
+Never state something is "verified," "confirmed," or "done" without pasting the actual evidence (code, SQL, query output, screenshot) in the same message. If asked to show evidence for something already claimed, and the evidence isn't immediately at hand, say so plainly ("I asserted this without re-checking — let me actually verify now") rather than restating the claim or calling the request repetitive. Assume every verification claim will be spot-checked.
+
 ## Build order (work one phase per session, review diffs before moving on)
 1. Supabase schema + migrations (TRD §4)
 2. Static candidate flow: auth → program/discipline select → question UI (no AI)
